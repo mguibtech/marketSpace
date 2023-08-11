@@ -8,10 +8,19 @@ import React, { useState } from 'react';
 import { Pressable, ScrollView } from 'react-native';
 import { Button } from '@components/Button'
 
+import {useNavigation} from '@react-navigation/native'
+
 import AvatarDefaltSvg from '@assets/Avatar.svg'
+import { THEME } from '../theme/index'
 
 export function SignUp() {
   const [show, setShow] = React.useState(false);
+
+  const navigation = useNavigation();
+
+  function handleGoBack(){
+    navigation.goBack()
+  }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
@@ -32,6 +41,13 @@ export function SignUp() {
           <AvatarDefaltSvg
             style={{marginBottom: 12}}
           />
+          <Button
+            title='Editar foto'
+            variant='ghost'
+            w='1/2 '
+            
+          >
+          </Button>
 
           <Input
             placeholder='Nome'
@@ -78,6 +94,7 @@ export function SignUp() {
             variant='outline'
             title='Ir para o login'
             marginBottom={8}
+            onPress={handleGoBack}
           />
 
         </Center>

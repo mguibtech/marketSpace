@@ -8,12 +8,22 @@ import React, { useState } from 'react';
 import { Pressable, ScrollView } from 'react-native';
 import { Button } from '@components/Button'
 
+import { useNavigation } from '@react-navigation/native'
+
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes'
+
 export function SignIn() {
   const [show, setShow] = React.useState(false);
 
+  const navigation = useNavigation<AuthNavigatorRoutesProps>()
+
+  function handleNewAccount(){
+    navigation.navigate('signUp')
+  }
+
   return (
     <ScrollView contentContainerStyle={{flexGrow:1}} showsVerticalScrollIndicator={false}>
-      <VStack flex={1}>
+      <VStack flex={1} bg='white'>
 
         <VStack px={10} mb={20} paddingBottom={16} bg='gray.200' borderBottomRightRadius={24} borderBottomLeftRadius={24}>
           <Center mt={16}>
@@ -57,6 +67,7 @@ export function SignIn() {
             variant='outline'
             title='Cirar uma conta'
             marginBottom={8}
+            onPress={handleNewAccount}
           />
         </Center>
 
